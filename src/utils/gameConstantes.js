@@ -1,0 +1,2 @@
+export const TURN_DURATION_SECONDS = 15;
+export const MAX_LEADERBOARD_SCORES = 10;
