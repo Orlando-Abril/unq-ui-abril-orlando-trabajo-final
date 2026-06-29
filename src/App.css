@@ -1,5 +1,5 @@
 .main-app {
   min-height: 100vh;
-  background-color: #f5f7fb;
-  color: #1f2937;
+  background: var(--bg);
+  color: var(--ink);
 }
