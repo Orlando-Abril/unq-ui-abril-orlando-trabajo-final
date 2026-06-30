@@ -6,16 +6,14 @@ import WordChain from "../../components/Game/WordChain.jsx";
 import GameMessage from "../../components/Game/GameMessage.jsx";
 import GameMejoresPuntajes from "../../components/Game/GameMejoresPuntajes.jsx";
 import GameOverSummary from "../../components/Game/GameResumenFinal.jsx";
+import GameActions from "../../components/Game/GameActions.jsx";
 import { useWordChainGame } from "../../hooks/useWordChainGame.js";
 import "./GamePage.css";
-import GameActions from "../../components/Game/GameActions.jsx";
-
 
 const GamePage = () => {
     const {
         words,
         score,
-        lastWord,
         nextLetter,
         message,
         remainingTime,
@@ -32,39 +30,22 @@ const GamePage = () => {
             <main className="game-page">
                 <GameHeader />
 
-                <section className="game-board">
+                <div className="game-board">
                     <div className="game-main-panel">
                         <GameEstadisticas
                             score={score}
                             wordsCount={words.length}
                             remainingTime={remainingTime}
+                            nextLetter={nextLetter}
                         />
 
-                        <GameActions
-                            canRestart={isGameStarted || words.length > 0}
-                            onRestart={restartGame}
-                        />
-
-                        <section className="current-turn-card">
-                            <span>{lastWord ? "Última palabra" : "Inicio de partida"}</span>
-                            <strong>{lastWord || "Primera palabra"}</strong>
-                            <p>
-                                {nextLetter
-                                    ? "La próxima palabra debe comenzar con"
-                                    : "Ingresá cualquier palabra válida para comenzar"}
-                                {nextLetter && <b> {nextLetter.toUpperCase()}</b>}.
-                            </p>
-                        </section>
-
-                        {isGameOver && (
+                        {isGameOver ? (
                             <GameOverSummary
                                 score={score}
                                 wordsCount={words.length}
                                 onRestart={restartGame}
                             />
-                        )}
-
-                        {!isGameOver && (
+                        ) : (
                             <WordInput
                                 nextLetter={nextLetter}
                                 isValidating={isValidating}
@@ -76,10 +57,17 @@ const GamePage = () => {
                         <GameMessage message={message} />
 
                         <WordChain words={words} />
+
+                        {!isGameOver && (
+                            <GameActions
+                                canRestart={isGameStarted || words.length > 0}
+                                onRestart={restartGame}
+                            />
+                        )}
                     </div>
 
                     <GameMejoresPuntajes scores={leaderboardScores} />
-                </section>
+                </div>
             </main>
         </AppLayout>
     );

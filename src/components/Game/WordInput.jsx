@@ -1,7 +1,14 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 const WordInput = ({ nextLetter, isValidating, isGameOver, onSubmitWord }) => {
     const [word, setWord] = useState("");
+    const inputRef = useRef(null);
+
+    useEffect(() => {
+        if (!isValidating && !isGameOver) {
+            inputRef.current?.focus();
+        }
+    }, [isValidating, isGameOver]);
 
     const handleSubmit = async (event) => {
         event.preventDefault();
@@ -23,6 +30,7 @@ const WordInput = ({ nextLetter, isValidating, isGameOver, onSubmitWord }) => {
 
             <div className="word-form-controls">
                 <input
+                    ref={inputRef}
                     id="word-input"
                     type="text"
                     value={word}

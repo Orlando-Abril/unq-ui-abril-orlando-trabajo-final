@@ -1,21 +1,17 @@
 .game-page {
     display: flex;
     flex-direction: column;
-    gap: 32px;
+    gap: 28px;
 }
 
 /* ----- Cabecera ----- */
 .game-header {
-    display: flex;
-    align-items: flex-end;
-    justify-content: space-between;
-    gap: 40px;
-    padding-bottom: 22px;
+    padding-bottom: 20px;
     border-bottom: 1px solid var(--hairline);
 }
 
 .game-kicker {
-    margin: 0 0 10px;
+    margin: 0 0 8px;
     color: var(--cyan);
     font-family: var(--font-mono);
     font-size: 0.75rem;
@@ -27,7 +23,7 @@
 .game-header h1 {
     margin: 0;
     color: var(--ink);
-    font-size: clamp(2.2rem, 6vw, 4rem);
+    font-size: clamp(2.2rem, 6vw, 3.6rem);
     font-weight: 800;
     line-height: 0.98;
     letter-spacing: 0.02em;
@@ -35,20 +31,11 @@
     text-shadow: 0 0 18px rgba(255, 46, 136, 0.35);
 }
 
-.game-header > p {
-    max-width: 420px;
-    margin: 0;
-    color: var(--muted);
-    font-size: 1rem;
-    line-height: 1.6;
-}
-
-/* ----- Tablero ----- */
+/* ----- Tablero: zona de juego + leaderboard debajo ----- */
 .game-board {
-    display: grid;
-    grid-template-columns: minmax(0, 1fr) 320px;
-    gap: 28px;
-    align-items: start;
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
 }
 
 .game-main-panel,
@@ -65,13 +52,19 @@
     padding: 28px;
 }
 
-/* ----- Anillo de tiempo (protagonista) ----- */
+/* ----- Foco único: marcador + anillo con letra objetivo ----- */
 .game-stats {
-    display: grid;
-    grid-template-columns: 1fr auto 1fr;
+    display: flex;
+    flex-direction: column;
     align-items: center;
-    gap: 16px;
-    padding: 6px 0;
+    gap: 18px;
+}
+
+.scoreboard {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
 }
 
 .arcade-score {
@@ -103,8 +96,8 @@
 
 .time-ring {
     position: relative;
-    width: 180px;
-    height: 180px;
+    width: 200px;
+    height: 200px;
 }
 
 .time-ring svg {
@@ -138,104 +131,40 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    gap: 2px;
 }
 
-.time-ring-center strong {
+.ring-time {
     font-family: var(--font-mono);
-    font-size: 3.4rem;
-    line-height: 1;
-    color: var(--ink);
+    font-size: 0.95rem;
+    letter-spacing: 0.06em;
+    color: var(--muted);
 }
 
-.time-ring-center strong.time-low {
+.ring-time-low {
     color: var(--low);
     animation: time-pulse 1s ease-in-out infinite;
 }
 
-.time-ring-center span {
-    margin-top: 4px;
+.ring-letter {
     font-family: var(--font-mono);
-    font-size: 0.7rem;
-    letter-spacing: 0.2em;
+    font-size: 4.6rem;
+    line-height: 0.9;
+    color: var(--ink);
+    text-shadow: 0 0 24px rgba(255, 46, 136, 0.55);
     text-transform: uppercase;
-    color: var(--muted);
 }
 
-@keyframes time-pulse {
-    50% { opacity: 0.45; }
-}
-
-/* ----- Acciones ----- */
-.game-actions {
-    display: flex;
-    justify-content: flex-end;
-}
-
-.game-actions button {
-    min-height: 40px;
-    padding: 0 16px;
-    border: 1px solid var(--hairline-strong);
-    border-radius: 8px;
-    background: transparent;
-    color: var(--ink-soft);
-    font-weight: 600;
-    cursor: pointer;
-    transition: border-color 0.15s ease, color 0.15s ease;
-}
-
-.game-actions button:hover {
-    border-color: var(--cyan);
-    color: var(--cyan);
-}
-
-/* ----- Tarjeta de turno: letra objetivo ----- */
-.current-turn-card {
-    padding: 22px 24px;
-    border: 1px solid var(--hairline);
-    border-radius: 14px;
-    background: var(--surface-soft);
-    text-align: center;
-}
-
-.current-turn-card span {
-    display: block;
+.ring-hint {
     font-family: var(--font-mono);
-    font-size: 0.72rem;
+    font-size: 0.66rem;
     letter-spacing: 0.18em;
     text-transform: uppercase;
     color: var(--muted);
 }
 
-.current-turn-card strong {
-    display: block;
-    margin-top: 6px;
-    font-size: 1.25rem;
-    letter-spacing: 0.04em;
-    text-transform: uppercase;
-    color: var(--cyan);
-}
-
-.current-turn-card p {
-    margin: 16px 0 0;
-    color: var(--ink-soft);
-    font-size: 1rem;
-}
-
-.current-turn-card b {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    min-width: 2.2em;
-    height: 2.2em;
-    margin: 0 0.18em;
-    padding: 0 0.3em;
-    border-radius: 12px;
-    background: var(--pink);
-    color: #1a0a1f;
-    font-family: var(--font-mono);
-    font-size: 1.5rem;
-    vertical-align: middle;
-    box-shadow: 0 0 18px rgba(255, 46, 136, 0.55);
+@keyframes time-pulse {
+    50% { opacity: 0.4; }
 }
 
 /* ----- Formulario ----- */
@@ -347,11 +276,11 @@
     color: #ff6f88;
 }
 
-/* ----- Cadena (historial arcade) ----- */
+/* ----- Cadena (tira de historial) ----- */
 .word-chain-card {
     display: flex;
     flex-direction: column;
-    gap: 16px;
+    gap: 14px;
 }
 
 .section-title {
@@ -364,9 +293,9 @@
 .section-title h2 {
     margin: 0;
     font-family: var(--font-mono);
-    font-size: 1.05rem;
+    font-size: 1rem;
     font-weight: 700;
-    letter-spacing: 0.1em;
+    letter-spacing: 0.12em;
     text-transform: uppercase;
     color: var(--ink);
 }
@@ -379,7 +308,7 @@
 
 .empty-chain {
     margin: 0;
-    padding: 18px;
+    padding: 16px;
     border: 1px dashed var(--hairline-strong);
     border-radius: 10px;
     color: var(--muted);
@@ -421,6 +350,29 @@
     background: rgba(34, 211, 238, 0.12);
     color: var(--cyan);
     box-shadow: 0 0 14px rgba(34, 211, 238, 0.25);
+}
+
+/* ----- Acciones ----- */
+.game-actions {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.game-actions button {
+    min-height: 40px;
+    padding: 0 16px;
+    border: 1px solid var(--hairline-strong);
+    border-radius: 8px;
+    background: transparent;
+    color: var(--ink-soft);
+    font-weight: 600;
+    cursor: pointer;
+    transition: border-color 0.15s ease, color 0.15s ease;
+}
+
+.game-actions button:hover {
+    border-color: var(--cyan);
+    color: var(--cyan);
 }
 
 /* ----- Resumen final ----- */
@@ -476,16 +428,16 @@
     box-shadow: 0 0 18px rgba(255, 46, 136, 0.55);
 }
 
-/* ----- Leaderboard ----- */
+/* ----- Leaderboard (full width, en grilla) ----- */
 .leaderboard-card {
     padding: 24px;
 }
 
 .leaderboard-list {
-    display: flex;
-    flex-direction: column;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
     gap: 10px;
-    margin: 20px 0 0;
+    margin: 18px 0 0;
     padding: 0;
     list-style: none;
 }
@@ -519,7 +471,7 @@
 }
 
 .empty-leaderboard {
-    margin: 20px 0 0;
+    margin: 18px 0 0;
     padding: 16px;
     border: 1px dashed var(--hairline-strong);
     border-radius: 10px;
@@ -529,18 +481,6 @@
 }
 
 /* ----- Responsive ----- */
-@media (max-width: 860px) {
-    .game-header {
-        align-items: flex-start;
-        flex-direction: column;
-        gap: 18px;
-    }
-
-    .game-board {
-        grid-template-columns: 1fr;
-    }
-}
-
 @media (max-width: 560px) {
     .app-layout {
         padding: 24px 14px;
@@ -549,22 +489,6 @@
     .game-main-panel,
     .leaderboard-card {
         padding: 18px;
-    }
-
-    .game-stats {
-        grid-template-columns: 1fr 1fr;
-        justify-items: center;
-        gap: 18px 12px;
-    }
-
-    .time-ring {
-        grid-column: 1 / -1;
-        order: -1;
-    }
-
-    .arcade-score-right {
-        align-items: flex-start;
-        text-align: left;
     }
 
     .word-form-controls {
