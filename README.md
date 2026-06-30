@@ -14,6 +14,15 @@ La partida comienza cuando el jugador ingresa la primera palabra válida. A part
 
 Cada palabra válida suma un punto por cada letra. El jugador dispone de 15 segundos por turno y el contador se reinicia únicamente cuando ingresa una palabra válida.
 
+## Cómo jugar
+
+Para poder jugar es necesario seguir estos pasos:
+
+```txt
+git clone https://github.com/Orlando-Abril/unq-ui-abril-orlando-trabajo-final.git
+npm run dev
+```
+
 ## Tecnologías
 
 - React
