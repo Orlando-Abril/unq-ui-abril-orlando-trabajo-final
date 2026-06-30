@@ -27,7 +27,8 @@ const WordInput = ({ nextLetter, isValidating, isGameOver, onSubmitWord }) => {
                     type="text"
                     value={word}
                     onChange={(event) => setWord(event.target.value)}
-                    placeholder={nextLetter ? `Ej: palabra con ${nextLetter.toUpperCase()}` : "Ej: casa"}                    autoComplete="off"
+                    placeholder={nextLetter ? `Palabra con ${nextLetter.toUpperCase()}` : "Ej: casa"}
+                    autoComplete="off"
                     disabled={isValidating || isGameOver}
                 />
                 <button type="submit" disabled={isValidating || isGameOver}>
