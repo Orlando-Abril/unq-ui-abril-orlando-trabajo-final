@@ -16,11 +16,29 @@ Cada palabra válida suma un punto por cada letra. El jugador dispone de 15 segu
 
 ## Cómo jugar
 
-Para poder jugar es necesario seguir estos pasos:
+Clonar el repositorio:
+
+```bash
+git clone https://github.com/Orlando-Abril/unq-ui-abril-orlando-trabajo-final.git
+cd unq-ui-abril-orlando-trabajo-final
+```
+
+Instalar dependencias:
+
+```bash
+npm install
+```
+
+Levantar la aplicación:
+
+```bash
+npm run dev
+```
+
+Luego abrir en el navegador la URL que muestra Vite, normalmente:
 
 ```txt
-git clone https://github.com/Orlando-Abril/unq-ui-abril-orlando-trabajo-final.git
-npm run dev
+http://localhost:5173
 ```
 
 ## Tecnologías
@@ -36,3 +54,4 @@ La validación de palabras se realiza mediante la API provista por la cátedra:
 
 ```txt
 GET https://word-api-hmlg.vercel.app/api/validate?word=<palabra>
+```g
