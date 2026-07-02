@@ -54,4 +54,3 @@ La validación de palabras se realiza mediante la API provista por la cátedra:
 
 ```txt
 GET https://word-api-hmlg.vercel.app/api/validate?word=<palabra>
-```g
