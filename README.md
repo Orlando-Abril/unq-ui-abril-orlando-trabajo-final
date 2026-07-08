@@ -14,6 +14,33 @@ La partida comienza cuando el jugador ingresa la primera palabra válida. A part
 
 Cada palabra válida suma un punto por cada letra. El jugador dispone de 15 segundos por turno y el contador se reinicia únicamente cuando ingresa una palabra válida.
 
+## Cómo jugar
+
+Clonar el repositorio:
+
+```bash
+git clone https://github.com/Orlando-Abril/unq-ui-abril-orlando-trabajo-final.git
+cd unq-ui-abril-orlando-trabajo-final
+```
+
+Instalar dependencias:
+
+```bash
+npm install
+```
+
+Levantar la aplicación:
+
+```bash
+npm run dev
+```
+
+Luego abrir en el navegador la URL que muestra Vite, normalmente:
+
+```txt
+http://localhost:5173
+```
+
 ## Tecnologías
 
 - React
